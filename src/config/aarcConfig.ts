@@ -5,10 +5,10 @@ import {
   TransactionErrorData,
   SourceConnectorName,
 } from "@aarc-xyz/fundkit-web-sdk";
-import { DIAMOND_ADDRESS, SupportedChainId } from "../constants";
+import { AARC_PROVIDER_ADDRESS, BASE_CHAIN_ID, SupportedChainId, USDC_TOKEN_ADDRESS } from "../constants";
 
 export const aarcConfig: FKConfig = {
-  appName: "IntentX x Aarc",
+  appName: "GMX x Aarc",
   module: {
     exchange: {
       enabled: true,
@@ -26,14 +26,14 @@ export const aarcConfig: FKConfig = {
   },
   destination: {
     contract: {
-      contractAddress: DIAMOND_ADDRESS[SupportedChainId.BASE],
-      contractName: "IntentX Deposit",
+      contractAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.BASE],
+      contractName: "GMX Deposit",
       contractPayload: "0x", // This will be updated dynamically
       contractGasLimit: "300000", // Standard gas limit, can be adjusted if needed
     },
-    walletAddress: DIAMOND_ADDRESS[SupportedChainId.BASE],
-    chainId: 8453, // Base chain ID
-    tokenAddress: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+    walletAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.BASE],
+    chainId: BASE_CHAIN_ID, // Base chain ID
+    tokenAddress: USDC_TOKEN_ADDRESS, // USDC on Base
   },
   appearance: {
     roundness: 42,

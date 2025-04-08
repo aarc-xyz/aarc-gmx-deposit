@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 
 function App() {
   const aarcModalRef = useRef(
-    new AarcFundKitModal(aarcConfig)
+    new AarcFundKitModal(aarcConfig, "dev", "https://deploy-preview-168--iframe-widget-v3.netlify.app")
   );
 
   const aarcModal = aarcModalRef.current;

@@ -30,6 +30,7 @@ export const aarcConfig: FKConfig = {
       contractName: "GMX Deposit",
       contractPayload: "0x", // This will be updated dynamically
       contractGasLimit: "300000", // Standard gas limit, can be adjusted if needed
+      contractLogoURI: "https://gmx.io/favicon/android-icon-192x192.png"
     },
     walletAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.BASE],
     chainId: BASE_CHAIN_ID, // Base chain ID

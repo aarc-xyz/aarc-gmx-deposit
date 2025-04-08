@@ -7,14 +7,14 @@ import { Navbar } from './Navbar';
 import StyledConnectButton from './StyledConnectButton';
 
 export const GMXDepositModal = ({ aarcModal }: { aarcModal: AarcFundKitModal }) => {
-    const [amount, setAmount] = useState('20');
+    const [amount, setAmount] = useState('0.1');
     const { disconnect } = useDisconnect();
 
     const { address } = useAccount();
 
     const handleDisconnect = () => {
         // Reset all state values
-        setAmount('20');
+        setAmount('0.1');
 
         // Disconnect wallet
         disconnect();
@@ -28,10 +28,10 @@ export const GMXDepositModal = ({ aarcModal }: { aarcModal: AarcFundKitModal }) 
             const aarcGmxProivderInterface = new ethers.Interface([
                 {
                     inputs: [
-                        { name: "token", type: "address" },
-                        { name: "amount", type: "uint256" },
-                        { name: "account", type: "address" },
-                        { name: "srcChainId", type: "uint256" }
+                        { internalType: "address", name: "token", type: "address" },
+                        { internalType: "uint256", name: "amount", type: "uint256" },
+                        { internalType: "address", name: "account", type: "address" },
+                        { internalType: "uint256", name: "srcChainId", type: "uint256" }
                     ],
                     name: "deposit",
                     outputs: [],
@@ -41,14 +41,6 @@ export const GMXDepositModal = ({ aarcModal }: { aarcModal: AarcFundKitModal }) 
             ]);
 
             const amountInWei = ethers.parseUnits(amount, 6); // USDC has 6 decimals
-
-            // Log the parameters for debugging
-            console.log("Deposit Parameters:", {
-                token: USDC_TOKEN_ADDRESS,
-                amount: amountInWei.toString(),
-                account: address,
-                srcChainId: BASE_CHAIN_ID
-            });
 
             const contractPayload = aarcGmxProivderInterface.encodeFunctionData("deposit", [
                 USDC_TOKEN_ADDRESS,
@@ -63,8 +55,7 @@ export const GMXDepositModal = ({ aarcModal }: { aarcModal: AarcFundKitModal }) 
             aarcModal.updateDestinationContract({
                 contractAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.BASE],
                 contractGasLimit: "800000",
-                contractPayload: contractPayload,
-                contractLogoURI: "https://gmx.io/favicon/android-icon-192x192.png"
+                contractPayload: contractPayload
             });
 
             // Open the Aarc modal
@@ -120,7 +111,7 @@ export const GMXDepositModal = ({ aarcModal }: { aarcModal: AarcFundKitModal }) 
 
                     {/* Quick Amount Buttons */}
                     <div className="flex gap-[14px] w-full">
-                        {['1', '5', '10', '20'].map((value) => (
+                        {['0.1', '0.3', '0.5', '0.7'].map((value) => (
                             <button
                                 key={value}
                                 onClick={() => setAmount(value)}
@@ -136,7 +127,7 @@ export const GMXDepositModal = ({ aarcModal }: { aarcModal: AarcFundKitModal }) 
                     <div className="flex gap-x-2 items-start p-4 bg-[rgba(255,183,77,0.05)] border border-[rgba(255,183,77,0.2)] rounded-2xl mt-2">
                         <img src="/info-icon.svg" alt="Info" className="w-4 h-4 mt-[2px]" />
                         <p className="text-xs font-bold text-[#F6F6F6] leading-5">
-                            Important! The funds will be deployed into GMX instance deployed by Aarc.
+                            Important! The funds will be deployed into GMX instance deployed by Aarc. Please deposit only small amounts.
                         </p>
                     </div>
 

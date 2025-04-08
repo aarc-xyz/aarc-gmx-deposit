@@ -7,7 +7,7 @@ export type AddressMap = {
 };
 
 export const AARC_PROVIDER_ADDRESS: AddressMap = {
-    [SupportedChainId.BASE]: '0x85228c474b480fc1ead5e3fc10280941258b3845'
+    [SupportedChainId.BASE]: '0x41AdD1Ea600301aa27b593F080E75824Dd35Fc53'
 };
 
 export const USDC_TOKEN_ADDRESS = '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'; // Base USDC address

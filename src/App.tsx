@@ -8,17 +8,11 @@ import { AarcEthWalletConnector, wagmiConfig } from '@aarc-xyz/eth-connector';
 import { aarcConfig } from './config/aarcConfig';
 import DepositModal from './components/GMXDepositModal';
 
-declare global {
-  interface Window {
-    __VUE__: boolean;
-  }
-}
-
 const queryClient = new QueryClient();
 
 function App() {
   const aarcModalRef = useRef(
-    new AarcFundKitModal(aarcConfig, "dev", "https://deploy-preview-168--iframe-widget-v3.netlify.app")
+    new AarcFundKitModal(aarcConfig)
   );
 
   const aarcModal = aarcModalRef.current;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAccount, useDisconnect } from 'wagmi';
 import { ethers } from 'ethers';
 import { AarcFundKitModal } from '@aarc-xyz/fundkit-web-sdk';
-import { AARC_PROVIDER_ADDRESS, BASE_CHAIN_ID, SupportedChainId, USDC_TOKEN_ADDRESS } from '../constants';
+import { AARC_PROVIDER_ADDRESS, ARBITRUM_CHAIN_ID, SupportedChainId, USDC_TOKEN_ADDRESS } from '../constants';
 import { Navbar } from './Navbar';
 import StyledConnectButton from './StyledConnectButton';
 
@@ -46,14 +46,14 @@ export const GMXDepositModal = ({ aarcModal }: { aarcModal: AarcFundKitModal }) 
                 USDC_TOKEN_ADDRESS,
                 amountInWei,
                 address,
-                BASE_CHAIN_ID
+                ARBITRUM_CHAIN_ID
             ]);
 
             aarcModal.updateRequestedAmount(Number(amount));
 
             // Update Aarc's destination contract configuration
             aarcModal.updateDestinationContract({
-                contractAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.BASE],
+                contractAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.ARBITRUM],
                 contractGasLimit: "800000",
                 contractPayload: contractPayload
             });

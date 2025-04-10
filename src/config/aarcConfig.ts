@@ -5,7 +5,7 @@ import {
   TransactionErrorData,
   SourceConnectorName,
 } from "@aarc-xyz/fundkit-web-sdk";
-import { AARC_PROVIDER_ADDRESS, BASE_CHAIN_ID, SupportedChainId, USDC_TOKEN_ADDRESS } from "../constants";
+import { AARC_PROVIDER_ADDRESS, ARBITRUM_CHAIN_ID, SupportedChainId, USDC_TOKEN_ADDRESS } from "../constants";
 
 export const aarcConfig: FKConfig = {
   appName: "GMX x Aarc",
@@ -26,15 +26,15 @@ export const aarcConfig: FKConfig = {
   },
   destination: {
     contract: {
-      contractAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.BASE],
+      contractAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.ARBITRUM],
       contractName: "GMX Deposit",
       contractPayload: "0x", // This will be updated dynamically
       contractGasLimit: "300000", // Standard gas limit, can be adjusted if needed
       contractLogoURI: "https://gmx.io/favicon/android-icon-192x192.png"
     },
-    walletAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.BASE],
-    chainId: BASE_CHAIN_ID, // Base chain ID
-    tokenAddress: USDC_TOKEN_ADDRESS, // USDC on Base
+    walletAddress: AARC_PROVIDER_ADDRESS[SupportedChainId.ARBITRUM],
+    chainId: ARBITRUM_CHAIN_ID, // Arb chain ID
+    tokenAddress: USDC_TOKEN_ADDRESS, // USDC on Arb
   },
   appearance: {
     roundness: 42,
